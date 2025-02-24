@@ -14,6 +14,9 @@ class Query(graphene.ObjectType):
 
     all_clients = graphene.List(ClientType)
 
+    def resolve_all_clients(root, info):
+        return Client.objects.all()
+
 #This creates the GraphQL schema with the Query class as the entry point.
 # It enables GraphQL queries like:
 schema = graphene.Schema(query=Query)
